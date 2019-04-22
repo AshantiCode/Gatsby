@@ -1,11 +1,12 @@
 import React from "react"
-import { Link } from "gatsby"
+
+import Layout from "../components/layout"
 
 const ContactPage = () => {
   return (
-    <div>
+    <Layout>
       <h1>I would love to hear from you!</h1>
-      <h2>You can reach me here:</h2>
+
       <p>
         Twitter: Follow me on{" "}
         <a href="https://twitter.com/ashanticode" rel="noopener">
@@ -19,7 +20,7 @@ const ContactPage = () => {
           werstreicheltwanja
         </a>
       </p>
-    </div>
+    </Layout>
   )
 }
 
