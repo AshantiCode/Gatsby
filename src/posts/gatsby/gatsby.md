@@ -5,6 +5,8 @@ date: "24.April 2019"
 
 I just launched a new Bootcamp
 
+![Leopard](./ddouk.jpg)
+
 ## Topics Covered
 
 1. Gatsby
