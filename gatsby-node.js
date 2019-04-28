@@ -1,6 +1,6 @@
 const path = require("path")
 
-//this function runs when a new node is created!
+//this function runs when a new node is created! from gatsby website
 module.exports.onCreateNode = ({ node, actions }) => {
   const { createNodeField } = actions
 
@@ -12,6 +12,25 @@ module.exports.onCreateNode = ({ node, actions }) => {
       name: "slug",
       value: slug,
     })
+  }
+
+  module.exports.createPages = async ({ graphql, actions }) => {
+    const { createPage } = actions
+    const blogTemplate = path.resolve(`src/templates/blog.js`)
+
+    const res = await graphql(`
+      query {
+        allMarkdiwnRemark {
+          edges {
+            node {
+              fields {
+                slug
+              }
+            }
+          }
+        }
+      }
+    `)
   }
 }
 
