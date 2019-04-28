@@ -13,25 +13,34 @@ module.exports.onCreateNode = ({ node, actions }) => {
       value: slug,
     })
   }
+}
+//this rund when user clicks on blog and the site for it is then created
+module.exports.createPages = async ({ graphql, actions }) => {
+  const { createPage } = actions
+  const blogTemplate = path.resolve("./src/templates/blog.js")
 
-  module.exports.createPages = async ({ graphql, actions }) => {
-    const { createPage } = actions
-    const blogTemplate = path.resolve(`src/templates/blog.js`)
-
-    const res = await graphql(`
-      query {
-        allMarkdiwnRemark {
-          edges {
-            node {
-              fields {
-                slug
-              }
+  const res = await graphql(`
+    query {
+      allMarkdownRemark {
+        edges {
+          node {
+            fields {
+              slug
             }
           }
         }
       }
-    `)
-  }
+    }
+  `)
+  res.data.allMarkdownRemark.edges.forEach(edge => {
+    createPage({
+      component: blogTemplate,
+      path: `/blog/${edge.node.fields.slug}`,
+      context: {
+        slug: edge.node.fields.slug,
+      },
+    })
+  })
 }
 
 // console.log(JSON.stringify(node, undefined, 4)) das hat uns die nodes im terminal gezeigt
