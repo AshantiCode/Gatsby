@@ -4,7 +4,13 @@ module.exports = {
         author: "Shanti Haring",
     },
     plugins: [
-        `gatsby-plugin-sass`,
+        {
+            resolve: "gatsby-source-contentful",
+            options: {
+                spaceId: "",
+                accessToken: "",
+            },
+        }`gatsby-plugin-sass`,
         {
             resolve: `gatsby-source-filesystem`,
             options: {
