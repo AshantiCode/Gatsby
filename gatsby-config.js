@@ -1,6 +1,6 @@
 module.exports = {
     siteMetadata: {
-        title: "Full-Stack Bootcamp",
+        title: "Full-Stack Gatsby Bootcamp",
         author: "Shanti Haring",
     },
     plugins: [
